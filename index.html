@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <title>Online Booking System</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Extra: catalog styles */
+        #catalog ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #catalog ul li {
+            padding: 8px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #fff;
+        }
+
+        #catalog .btn {
+            margin-top: 15px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div class="main">
@@ -26,16 +44,54 @@
             </div>
         </div>
 
-        <div class="form">
+        <!-- LOGIN FORM -->
+        <div class="form" id="login-form">
             <h2>Login Here</h2>
-            <input type="email" name="email" placeholder="Enter Your Mail">
-            <input type="password" name="password" placeholder="Enter Your Password">
-            <button class="btn"><a href="#">Login</a></button>
+            <input type="email" id="email" placeholder="Enter Your Mail">
+            <input type="password" id="password" placeholder="Enter Your Password">
+            <button class="btn" onclick="loginUser()">Login</button>
 
             <p class="link">Don't have an account?</p>
             <a href="#">Sign up here</a>
             <p class="liw">Log in with</p>
         </div>
+
+        <!-- PRODUCT CATALOG -->
+        <div class="form" id="catalog" style="display: none;">
+            <h2>Product Catalog</h2>
+            <ul>
+                <li>📦 Product A - ₹999</li>
+                <li>📦 Product B - ₹799</li>
+                <li>📦 Product C - ₹499</li>
+                <li>📦 Product D - ₹1,299</li>
+            </ul>
+            <button class="btn" onclick="logoutUser()">Logout</button>
+        </div>
     </div>
+
+    <script>
+        // Dummy login credentials
+        const dummyUser = {
+            email: "user@example.com",
+            password: "password123"
+        };
+
+        function loginUser() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (email === dummyUser.email && password === dummyUser.password) {
+                document.getElementById("login-form").style.display = "none";
+                document.getElementById("catalog").style.display = "block";
+            } else {
+                alert("Invalid credentials.\nTry:\nEmail: user@example.com\nPassword: password123");
+            }
+        }
+
+        function logoutUser() {
+            document.getElementById("catalog").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+        }
+    </script>
 </body>
 </html>
