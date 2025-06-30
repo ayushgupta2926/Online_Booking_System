@@ -4,24 +4,6 @@
     <meta charset="UTF-8">
     <title>Online Booking System</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Extra: catalog styles */
-        #catalog ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        #catalog ul li {
-            padding: 8px 0;
-            font-size: 16px;
-            border-bottom: 1px solid #fff;
-        }
-
-        #catalog .btn {
-            margin-top: 15px;
-            width: 100%;
-        }
-    </style>
 </head>
 <body>
     <div class="main">
@@ -50,7 +32,6 @@
             <input type="email" id="email" placeholder="Enter Your Mail">
             <input type="password" id="password" placeholder="Enter Your Password">
             <button class="btn" onclick="loginUser()">Login</button>
-
             <p class="link">Don't have an account?</p>
             <a href="#">Sign up here</a>
             <p class="liw">Log in with</p>
@@ -60,38 +41,43 @@
         <div class="form" id="catalog" style="display: none;">
             <h2>Product Catalog</h2>
             <ul>
-                <li>📦 Product A - ₹999</li>
-                <li>📦 Product B - ₹799</li>
-                <li>📦 Product C - ₹499</li>
-                <li>📦 Product D - ₹1,299</li>
+                <li>
+                    <img src="https://via.placeholder.com/50" alt="Product A">
+                    &nbsp; Product A - ₹999
+                    <button class="btn" onclick="addToCart('Product A')">🛒</button>
+                </li>
+                <li>
+                    <img src="https://via.placeholder.com/50" alt="Product B">
+                    &nbsp; Product B - ₹799
+                    <button class="btn" onclick="addToCart('Product B')">🛒</button>
+                </li>
+                <li>
+                    <img src="https://via.placeholder.com/50" alt="Product C">
+                    &nbsp; Product C - ₹499
+                    <button class="btn" onclick="addToCart('Product C')">🛒</button>
+                </li>
+                <li>
+                    <img src="https://via.placeholder.com/50" alt="Product D">
+                    &nbsp; Product D - ₹1,299
+                    <button class="btn" onclick="addToCart('Product D')">🛒</button>
+                </li>
             </ul>
+
+            <p style="margin-top: 10px;">🧺 Cart Items: <span id="cart-count">0</span></p>
+
+            <button class="btn" onclick="showCart()">🛍️ Go to Cart</button>
             <button class="btn" onclick="logoutUser()">Logout</button>
+        </div>
+
+        <!-- CART VIEW -->
+        <div class="form" id="cart-view" style="display: none;">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <button class="btn" onclick="buyItems()">✅ Buy</button>
+            <button class="btn" onclick="closeCart()">❌ Close</button>
         </div>
     </div>
 
-    <script>
-        // Dummy login credentials
-        const dummyUser = {
-            email: "user@example.com",
-            password: "password123"
-        };
-
-        function loginUser() {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            if (email === dummyUser.email && password === dummyUser.password) {
-                document.getElementById("login-form").style.display = "none";
-                document.getElementById("catalog").style.display = "block";
-            } else {
-                alert("Invalid credentials.\nTry:\nEmail: user@example.com\nPassword: password123");
-            }
-        }
-
-        function logoutUser() {
-            document.getElementById("catalog").style.display = "none";
-            document.getElementById("login-form").style.display = "block";
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
