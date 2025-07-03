@@ -1,49 +1,26 @@
-const dummyUser = { email: "user@example.com", password: "password123" };
+let cart = [];
 
 function loginUser() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  if (email === dummyUser.email && password === dummyUser.password) {
-    document.getElementById("login-form").style.display = "none";
-    document.getElementById("catalog").style.display = "block";
-    updateCartCount();
-  } else {
-    alert("Invalid credentials.\nTry:\nEmail: user@example.com\nPassword: password123");
-  }
+  document.getElementById("login-form").style.display = "none";
+  document.getElementById("catalog").style.display = "block";
 }
 
-function logoutUser() {
-  localStorage.removeItem("cart");
-  document.getElementById("catalog").style.display = "none";
-  document.getElementById("cart-view").style.display = "none";
-  document.getElementById("login-form").style.display = "block";
-}
-
-function addToCart(productName) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(productName);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-}
-
-function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+function addToCart(item) {
+  cart.push(item);
   document.getElementById("cart-count").textContent = cart.length;
+  localStorage.setItem("cartItems", JSON.stringify(cart));
 }
 
 function showCart() {
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = JSON.parse(localStorage.getItem("cartItems")) || [];
   const ul = document.getElementById("cart-items");
   ul.innerHTML = "";
-  if (cartItems.length === 0) {
-    ul.innerHTML = "<li>Your cart is empty.</li>";
-  } else {
-    cartItems.forEach(item => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      ul.appendChild(li);
-    });
-  }
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    ul.appendChild(li);
+  });
+
   document.getElementById("catalog").style.display = "none";
   document.getElementById("cart-view").style.display = "block";
 }
@@ -53,13 +30,45 @@ function closeCart() {
   document.getElementById("catalog").style.display = "block";
 }
 
-function buyItems() {
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  if (cartItems.length === 0) {
-    alert("Your cart is empty."); return;
+function logoutUser() {
+  localStorage.removeItem("cartItems");
+  cart = [];
+  document.getElementById("cart-count").textContent = 0;
+  document.getElementById("catalog").style.display = "none";
+  document.getElementById("login-form").style.display = "block";
+}
+
+function proceedToDelivery() {
+  document.getElementById("cart-view").style.display = "none";
+  document.getElementById("delivery-view").style.display = "block";
+}
+
+function backToCart() {
+  document.getElementById("delivery-view").style.display = "none";
+  document.getElementById("cart-view").style.display = "block";
+}
+
+function confirmOrder() {
+  const address = document.getElementById("address").value.trim();
+  const payment = document.getElementById("payment-method").value;
+
+  if (!address) {
+    alert("Please enter delivery address.");
+    return;
   }
-  alert("Thank you for your purchase!\nItems bought:\n" + cartItems.join(", "));
-  localStorage.removeItem("cart");
-  updateCartCount();
-  closeCart();
+
+  if (!payment) {
+    alert("Please select a payment method.");
+    return;
+  }
+
+  alert("✅ Order confirmed!\n\n📍 Address:\n" + address + "\n💳 Payment: " + payment);
+  
+  localStorage.removeItem("cartItems");
+  document.getElementById("cart-count").textContent = 0;
+  cart = [];
+
+  // Reset views
+  document.getElementById("delivery-view").style.display = "none";
+  document.getElementById("login-form").style.display = "block";
 }

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Online Booking System</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
   <div class="main">
+    <!-- Navbar -->
     <div class="navbar">
       <div class="icon"><h2 class="logo">LOGO</h2></div>
       <div class="menu">
@@ -19,7 +21,7 @@
         </ul>
       </div>
       <div class="search">
-        <input class="srch" type="search" placeholder="Type to search">
+        <input class="srch" type="search" placeholder="Type to search" />
         <button class="btn">Search</button>
       </div>
     </div>
@@ -27,8 +29,8 @@
     <!-- LOGIN -->
     <div class="form" id="login-form">
       <h2>Login Here</h2>
-      <input type="email" id="email" placeholder="Enter Your Mail">
-      <input type="password" id="password" placeholder="Enter Your Password">
+      <input type="email" id="email" placeholder="Enter Your Mail" />
+      <input type="password" id="password" placeholder="Enter Your Password" />
       <button class="btn" onclick="loginUser()">Login</button>
       <p class="link">Don't have an account?</p>
       <a href="#">Sign up here</a>
@@ -53,11 +55,27 @@
     <div class="form" id="cart-view" style="display: none;">
       <h2>Your Cart</h2>
       <ul id="cart-items"></ul>
-      <button class="btn" onclick="buyItems()">✅ Buy</button>
-      <button class="btn" onclick="closeCart()">❌ Close</button>
+      <button class="btn" onclick="proceedToDelivery()">📦 Proceed to Delivery</button>
+      <button class="btn" onclick="closeCart()">❌ Back to Catalog</button>
+    </div>
+
+    <!-- DELIVERY & PAYMENT PAGE -->
+    <div class="form" id="delivery-view" style="display: none;">
+      <h2>Delivery Details</h2>
+      <label>Enter Delivery Address:</label>
+      <textarea id="address" rows="4" placeholder="Enter your full delivery address..."></textarea>
+
+      <label>Select Payment Method:</label>
+      <select id="payment-method">
+        <option value="">-- Choose Payment Method --</option>
+        <option value="UPI">UPI</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+      </select>
+
+      <button class="btn" onclick="confirmOrder()">✅ Confirm Order</button>
+      <button class="btn" onclick="backToCart()">← Back to Cart</button>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
