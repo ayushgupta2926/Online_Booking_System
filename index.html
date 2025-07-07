@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="main">
-    <!-- Navbar -->
+    
     <div class="navbar">
       <div class="icon"><h2 class="logo">LOGO</h2></div>
       <div class="menu">
@@ -26,7 +26,6 @@
       </div>
     </div>
 
-    <!-- LOGIN -->
     <div class="form" id="login-form">
       <h2>Login Here</h2>
       <input type="email" id="email" placeholder="Enter Your Mail" />
@@ -37,8 +36,7 @@
       <p class="liw">Log in with</p>
     </div>
 
-    <!-- PRODUCT CATALOG -->
-    <div class="form" id="catalog" style="display: none;">
+        <div class="form" id="catalog" style="display: none;">
       <h2>Product Catalog</h2>
       <ul>
         <li><img src="image1.jpeg" alt="Product A"> Product A - ₹999 <button class="btn" onclick="addToCart('Product A')">🛒</button></li>
@@ -51,26 +49,28 @@
       <button class="btn" onclick="logoutUser()">Logout</button>
     </div>
 
-    <!-- CART VIEW -->
     <div class="form" id="cart-view" style="display: none;">
       <h2>Your Cart</h2>
       <ul id="cart-items"></ul>
       <button class="btn" onclick="proceedToDelivery()">📦 Proceed to Delivery</button>
       <button class="btn" onclick="closeCart()">❌ Back to Catalog</button>
+      <button class="btn" onclick="rateus()">📦Rate us</button>
     </div>
 
-    <!-- DELIVERY & PAYMENT PAGE -->
     <div class="form" id="delivery-view" style="display: none;">
       <h2>Delivery Details</h2>
       <label>Enter Delivery Address:</label>
+      <label>Enter Your ZipCode:</label>
       <textarea id="address" rows="4" placeholder="Enter your full delivery address..."></textarea>
-
+      <textarea id="ZIP Code" rows="1" placeholder="Enter your Postal Zip Code..."></textarea>
       <label>Select Payment Method:</label>
       <select id="payment-method">
         <option value="">-- Choose Payment Method --</option>
         <option value="UPI">UPI</option>
         <option value="Credit Card">Credit Card</option>
         <option value="Cash on Delivery">Cash on Delivery</option>
+        <option value="Net Banking">Net Banking</option>
+        <option value="BHIM">BHIM</option>
       </select>
 
       <button class="btn" onclick="confirmOrder()">✅ Confirm Order</button>
