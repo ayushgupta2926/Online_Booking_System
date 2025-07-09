@@ -26,6 +26,7 @@
       </div>
     </div>
 
+
     <div class="form" id="login-form">
       <h2>Login Here</h2>
       <input type="email" id="email" placeholder="Enter Your Mail" />
@@ -43,26 +44,32 @@
         <li><img src="image2.jpeg" alt="Product B"> Product B - ₹799 <button class="btn" onclick="addToCart('Product B')">🛒</button></li>
         <li><img src="image3.jpeg" alt="Product C"> Product C - ₹499 <button class="btn" onclick="addToCart('Product C')">🛒</button></li>
         <li><img src="image4.jpeg" alt="Product D"> Product D - ₹1,299 <button class="btn" onclick="addToCart('Product D')">🛒</button></li>
+        <li><img src="image5.jpeg" alt="Product E"> Product E - ₹1,299 <button class="btn" onclick="addToCart('Product E')">🛒</button></li>
+        <li><img src="image6.jpeg" alt="Product F"> Product F - ₹1,599 <button class="btn" onclick="addToCart('Product F')">🛒</button></li>
+        <li><img src="image7.jpeg" alt="Product G"> Product G - ₹1,799 <button class="btn" onclick="addToCart('Product G')">🛒</button></li>
+        
       </ul>
       <p style="margin-top:10px;">🧺 Cart Items: <span id="cart-count">0</span></p>
       <button class="btn" onclick="showCart()">🛍️ Go to Cart</button>
       <button class="btn" onclick="logoutUser()">Logout</button>
     </div>
 
+
     <div class="form" id="cart-view" style="display: none;">
       <h2>Your Cart</h2>
       <ul id="cart-items"></ul>
       <button class="btn" onclick="proceedToDelivery()">📦 Proceed to Delivery</button>
       <button class="btn" onclick="closeCart()">❌ Back to Catalog</button>
-      <button class="btn" onclick="rateus()">📦Rate us</button>
+      <button class="btn" onclick="rateUs()">📦Rate us</button>
     </div>
+
 
     <div class="form" id="delivery-view" style="display: none;">
       <h2>Delivery Details</h2>
       <label>Enter Delivery Address:</label>
       <label>Enter Your ZipCode:</label>
       <textarea id="address" rows="4" placeholder="Enter your full delivery address..."></textarea>
-      <textarea id="ZIP Code" rows="1" placeholder="Enter your Postal Zip Code..."></textarea>
+      <textarea id="ZIP Code" rows="1" placeholder="Enter your Zip Code..."></textarea>
       <label>Select Payment Method:</label>
       <select id="payment-method">
         <option value="">-- Choose Payment Method --</option>
