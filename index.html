@@ -8,7 +8,6 @@
 </head>
 <body>
   <div class="main">
-    
     <div class="navbar">
       <div class="icon"><h2 class="logo">LOGO</h2></div>
       <div class="menu">
@@ -26,7 +25,6 @@
       </div>
     </div>
 
-
     <div class="form" id="login-form">
       <h2>Login Here</h2>
       <input type="email" id="email" placeholder="Enter Your Mail" />
@@ -37,7 +35,7 @@
       <p class="liw">Log in with</p>
     </div>
 
-        <div class="form" id="catalog" style="display: none;">
+    <div class="form" id="catalog" style="display: none;">
       <h2>Product Catalog</h2>
       <ul>
         <li><img src="image1.jpeg" alt="Product A"> Product A - ₹999 <button class="btn" onclick="addToCart('Product A')">🛒</button></li>
@@ -47,13 +45,11 @@
         <li><img src="image5.jpeg" alt="Product E"> Product E - ₹1,299 <button class="btn" onclick="addToCart('Product E')">🛒</button></li>
         <li><img src="image6.jpeg" alt="Product F"> Product F - ₹1,599 <button class="btn" onclick="addToCart('Product F')">🛒</button></li>
         <li><img src="image7.jpeg" alt="Product G"> Product G - ₹1,799 <button class="btn" onclick="addToCart('Product G')">🛒</button></li>
-        
       </ul>
       <p style="margin-top:10px;">🧺 Cart Items: <span id="cart-count">0</span></p>
       <button class="btn" onclick="showCart()">🛍️ Go to Cart</button>
       <button class="btn" onclick="logoutUser()">Logout</button>
     </div>
-
 
     <div class="form" id="cart-view" style="display: none;">
       <h2>Your Cart</h2>
@@ -63,12 +59,11 @@
       <button class="btn" onclick="rateUs()">📦Rate us</button>
     </div>
 
-
     <div class="form" id="delivery-view" style="display: none;">
       <h2>Delivery Details</h2>
       <label>Enter Delivery Address:</label>
-      <label>Enter Your ZipCode:</label>
       <textarea id="address" rows="4" placeholder="Enter your full delivery address..."></textarea>
+      <label>Enter Your ZipCode:</label>
       <textarea id="ZIP Code" rows="1" placeholder="Enter your Zip Code..."></textarea>
       <label>Select Payment Method:</label>
       <select id="payment-method">
@@ -79,9 +74,18 @@
         <option value="Net Banking">Net Banking</option>
         <option value="BHIM">BHIM</option>
       </select>
-
       <button class="btn" onclick="confirmOrder()">✅ Confirm Order</button>
       <button class="btn" onclick="backToCart()">← Back to Cart</button>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Modal -->
+  <div id="order-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">×</span>
+      <h2>✅ Order Confirmed!</h2>
+      <p id="order-summary"></p>
+      <button class="btn" onclick="closeModal()">OK</button>
     </div>
   </div>
 </body>

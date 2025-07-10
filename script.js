@@ -62,13 +62,18 @@ function confirmOrder() {
     return;
   }
 
-  alert("✅ Order confirmed!\n\n📍 Address:\n" + address + "\n💳 Payment: " + payment);
-  
+  const summary = `📍 <strong>Address:</strong><br>${address}<br><br>💳 <strong>Payment:</strong> ${payment}`;
+  document.getElementById("order-summary").innerHTML = summary;
+  document.getElementById("order-modal").style.display = "flex";
+
   localStorage.removeItem("cartItems");
   document.getElementById("cart-count").textContent = 0;
   cart = [];
 
-  // Reset views
   document.getElementById("delivery-view").style.display = "none";
+}
+
+function closeModal() {
+  document.getElementById("order-modal").style.display = "none";
   document.getElementById("login-form").style.display = "block";
 }
