@@ -1,204 +1,250 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .main {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url('pic.jpeg');
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    color: #fff;
-    overflow-y: auto;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url('pic.jpeg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: #fff;
+  overflow-y: auto;
+  padding-bottom: 50px;
 }
 
 .navbar {
-    width: 100%;
-    height: 75px;
-    display: flex;
-    align-items: center;
-    padding: 0 50px;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
 }
 
 .icon {
-    flex: 1;
+  flex: 1;
 }
 
 .logo {
-    color: #ff7200;
-    font-size: 35px;
-    padding-top: 10px;
+  color: #ff7200;
+  font-size: 35px;
+  padding-top: 10px;
 }
 
 .menu {
-    flex: 2;
+  flex: 2;
 }
 
 .menu ul {
-    display: flex;
-    list-style: none;
-    justify-content: space-around;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
 }
 
 .menu ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: 0.4s;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: 0.4s;
 }
 
 .menu ul li a:hover {
-    color: #ff7200;
+  color: #ff7200;
 }
 
 .search {
-    flex: 1;
-    display: flex;
-    align-items: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .srch {
-    width: 200px;
-    height: 40px;
-    background: transparent;
-    border: 1px solid #ff7200;
-    color: #fff;
-    font-size: 16px;
-    padding: 0 10px;
-    border-right: none;
-    border-radius: 5px 0 0 5px;
+  width: 200px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid #ff7200;
+  color: #fff;
+  font-size: 16px;
+  padding: 0 10px;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
 }
 
 .btn {
-    width: 100px;
-    height: 40px;
-    background: #ff7200;
-    border: none;
-    color: white;
-    font-size: 15px;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 100px;
+  height: 40px;
+  background: #ff7200;
+  border: none;
+  color: white;
+  font-size: 15px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .btn:hover {
-    background: white;
-    color: #ff7200;
+  background: white;
+  color: #ff7200;
 }
 
 .form {
-    width: 300px;
-    background: rgba(0,0,0,0.7);
-    padding: 30px;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    right: 100px;
-    transform: translateY(-50%);
+  width: 90%;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  right: 100px;
+  transform: translateY(-50%);
 }
 
 .form h2 {
-    text-align: center;
-    color: #ff7200;
-    background: white;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+  text-align: center;
+  color: #ff7200;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .form input,
 .form textarea,
 .form select {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.form .btn a {
-    text-decoration: none;
-    color: white;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 .link,
 .liw {
-    margin-top: 10px;
-    text-align: center;
+  margin-top: 10px;
+  text-align: center;
+  color: #ccc;
 }
 
 #catalog ul {
-    list-style: none;
-    padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 #catalog ul li {
-    padding: 8px 0;
-    font-size: 16px;
-    border-bottom: 1px solid #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  padding: 8px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 #catalog ul li img {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 10px;
 }
 
 #cart-items {
-    list-style: none;
-    padding: 0;
-    color: white;
+  list-style: none;
+  padding: 0;
+  color: white;
 }
 
 #cart-items li {
-    margin-bottom: 8px;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 5px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
 }
 
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
 .modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 0 10px #000;
-    color: black;
-    position: relative;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 10px #000;
+  color: black;
+  position: relative;
 }
 
 .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 22px;
-    color: #ff7200;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 22px;
+  color: #ff7200;
+  cursor: pointer;
+}
+
+/* Media Query for Mobile/Tablet */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+    padding-left: 20px;
+  }
+
+  .search {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .form {
+    position: static;
+    transform: none;
+    margin: 30px auto;
+    right: auto;
+    top: auto;
+  }
+
+  .main {
+    padding: 20px;
+  }
+
+  #catalog ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
 }
