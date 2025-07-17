@@ -1,4 +1,5 @@
 let cart = [];
+let orders = JSON.parse(localStorage.getItem("orders") || "[]");
 
 // User Login
 function loginUser() {
@@ -65,39 +66,41 @@ function cancelorder() {
   }
 }
 
-// Confirm order and show summary modal
+// Confirm order and show modal
 function confirmOrder() {
   const address = document.getElementById("address").value.trim();
-  const zipcode = document.getElementById("zipcode")?.value.trim(); // Use corrected ID
+  const zipcode = document.getElementById("zipcode").value.trim();
   const payment = document.getElementById("payment-method").value;
+  const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
 
-  if (!address) {
-    alert("Please enter delivery address.");
+  if (!address || !zipcode || !payment) {
+    alert("Please complete all delivery details!");
     return;
   }
 
-  if (!zipcode) {
-    alert("Please enter your zip code.");
-    return;
-  }
-
-  if (!payment) {
-    alert("Please select a payment method.");
+  if (cartItems.length === 0) {
+    alert("Your cart is empty!");
     return;
   }
 
   const summary = `
-    📍 <strong>Address:</strong><br>${address} - ${zipcode}<br><br>
-    💳 <strong>Payment:</strong> ${payment}
+    <strong>Items:</strong> ${cartItems.join(", ")}<br>
+    <strong>Address:</strong> ${address}<br>
+    <strong>Zip:</strong> ${zipcode}<br>
+    <strong>Payment:</strong> ${payment}
   `;
-  document.getElementById("order-summary").innerHTML = summary;
-  document.getElementById("order-modal").style.display = "flex";
 
-  // Reset cart
+  document.getElementById("order-summary").innerHTML = summary;
+  document.getElementById("order-modal").style.display = "block";
+
+  // Save order
+  orders.push({ items: cartItems, address, zipcode, payment });
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  // Clear cart and form
   localStorage.removeItem("cartItems");
   cart = [];
-  document.getElementById("cart-count").textContent = 0;
-
+  document.getElementById("cart-count").textContent = "0";
   document.getElementById("delivery-view").style.display = "none";
 }
 
@@ -110,4 +113,37 @@ function closeModal() {
 // Rate Us (dummy action)
 function rateUs() {
   alert("Thank you for shopping with us! 🌟 Please rate us 5 stars!");
+}
+
+// View My Orders
+function seeMyOrders() {
+  document.getElementById("catalog").style.display = "none";
+  document.getElementById("orders-view").style.display = "block";
+
+  const ordersList = document.getElementById("orders-list");
+  ordersList.innerHTML = "";
+
+  const savedOrders = JSON.parse(localStorage.getItem("orders") || "[]");
+
+  if (savedOrders.length === 0) {
+    ordersList.innerHTML = "<li>No orders placed yet.</li>";
+  } else {
+    savedOrders.forEach((order, index) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <strong>Order ${index + 1}:</strong><br>
+        Items: ${order.items.join(", ")}<br>
+        Address: ${order.address}<br>
+        Zipcode: ${order.zipcode}<br>
+        Payment: ${order.payment}
+      `;
+      ordersList.appendChild(li);
+    });
+  }
+}
+
+// Back to catalog from orders view
+function backToCatalog() {
+  document.getElementById("orders-view").style.display = "none";
+  document.getElementById("catalog").style.display = "block";
 }
